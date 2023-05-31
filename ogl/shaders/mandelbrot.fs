@@ -5,8 +5,8 @@ in vec3 vPos;
 out vec3 fragColor;
 
 uniform int fractalType = 0;
-uniform int coloringType = 0;
-uniform int iterations = 1000;
+uniform int coloringType = 1;
+uniform int iterations = 5000;
 uniform float zoom = 0.5;
 uniform vec2 translation = vec2(0.0, 0.0);
 uniform vec2 juliaC = vec2(-0.1, 0.65);
@@ -75,6 +75,7 @@ vec3 coloring(vec2 fractalResult)
 
 void main()
 {
-	//if (fractalType == 1) discard;
+	if (length(vPos.xy) < 0.1) discard;
+	//if (abs(vPos.x) < 0.1 && abs(vPos.y) < 0.1) discard;
 	fragColor = coloring(fractal(vPos.xy / zoom + translation));
 }
