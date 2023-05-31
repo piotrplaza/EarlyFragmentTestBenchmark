@@ -77,6 +77,8 @@ void OGLInitialize()
 
 	Tools::VSync(true);
 	glEnable(GL_DEPTH_TEST);
+	//glDepthFunc(GL_GREATER);
+	//glClearDepth(0.0f);
 
 	mandelbrotShader = std::make_unique<Shaders::Programs::Mandelbrot>();
 	posTexCoordBuffers = std::make_unique<Buffers::PosTexCoordBuffers>();
